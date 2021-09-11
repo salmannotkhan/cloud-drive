@@ -37,11 +37,12 @@ function App() {
                 <img
                     src={arrow}
                     onClick={() => {
+                        const arr = currPath.split("/").filter((x) => x);
                         setCurrPath(
                             currPath.substr(
                                 0,
-                                currPath.indexOf(currPath.split("/").pop())
-                            ) + "/"
+                                currPath.indexOf(arr[arr.length - 1])
+                            )
                         );
                     }}
                     alt="back"
