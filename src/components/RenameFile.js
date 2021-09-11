@@ -12,6 +12,7 @@ export default function RenameFile(props) {
                 setFileName(file.name);
             }
         });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const renameFile = (e) => {
