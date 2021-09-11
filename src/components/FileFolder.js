@@ -6,7 +6,7 @@ import addNewButton from "../assets/add_new_button.png";
 import "../styles/FileFolder.css";
 
 export default function FileFolder(props) {
-    if (props.name === "") {
+    if (!props.name) {
         return (
             <div className="new-file" onClick={props.handleClick}>
                 <img
@@ -26,10 +26,9 @@ export default function FileFolder(props) {
                 }
             >
                 <img
-                    style={{ height: props.name !== "" ? 75 : 100, width: 75 }}
+                    style={{ height: 75, width: 75 }}
                     alt={props.name}
                     src={props.type === "file" ? fileIcon : folderIcon}
-                    name={props.name}
                 />
                 <div>{props.name}</div>
             </div>
@@ -38,8 +37,8 @@ export default function FileFolder(props) {
                 <MenuItem
                     onClick={() =>
                         props.handleContextMenu({
-                            id: props.id,
                             action: "rename",
+                            id: props.id,
                         })
                     }
                     className="menu-item"
@@ -50,8 +49,9 @@ export default function FileFolder(props) {
                 <MenuItem
                     onClick={() =>
                         props.handleContextMenu({
-                            id: props.id,
                             action: "delete",
+                            id: props.id,
+                            name: props.name,
                         })
                     }
                     className="menu-item danger"

@@ -53,6 +53,7 @@ export default function RenameFile(props) {
                 name="fileName"
                 style={{ borderColor: error ? "red" : "lightgray" }}
                 value={fileName}
+                autoFocus
                 onChange={(e) => setFileName(e.target.value)}
             />
             {error ? <div style={{ color: "red" }}>{error}</div> : null}

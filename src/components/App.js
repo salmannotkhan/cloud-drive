@@ -17,14 +17,19 @@ function App() {
     const [currPath, setCurrPath] = useState("/");
 
     const handleContextMenu = (data) => {
-        console.log(data);
         switch (data.action) {
             case "rename":
                 setFileId(data.id);
                 setRenameModal(true);
                 break;
             case "delete":
-                setFileList(fileList.filter((file) => file.id !== data.id));
+                setFileList(
+                    fileList.filter(
+                        (file) =>
+                            file.id !== data.id &&
+                            !file.path.startsWith(`${currPath}${data.name}/`)
+                    )
+                );
                 break;
             default:
                 console.log("Invalid action");
@@ -98,7 +103,6 @@ function App() {
                     handleClick={() => {
                         setShowNewModal(true);
                     }}
-                    name=""
                 />
             </div>
         </div>

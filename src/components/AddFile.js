@@ -47,7 +47,10 @@ export default function AddFile(props) {
                     className={`file-type ${
                         fileType === "file" ? "selected" : ""
                     }`}
-                    onClick={() => setFileType("file")}
+                    onClick={(e) => {
+                        setFileType("file");
+                        e.target.parentElement.nextSibling.focus();
+                    }}
                 >
                     File
                 </div>
@@ -55,7 +58,10 @@ export default function AddFile(props) {
                     className={`file-type ${
                         fileType === "folder" ? "selected" : ""
                     }`}
-                    onClick={() => setFileType("folder")}
+                    onClick={(e) => {
+                        setFileType("folder");
+                        e.target.parentElement.nextSibling.focus();
+                    }}
                 >
                     Folder
                 </div>
