@@ -38,12 +38,13 @@ function App() {
                     src={arrow}
                     onClick={() => {
                         const arr = currPath.split("/").filter((x) => x);
-                        setCurrPath(
-                            currPath.substr(
-                                0,
-                                currPath.indexOf(arr[arr.length - 1])
-                            )
-                        );
+                        if (arr.length > 0)
+                            setCurrPath(
+                                currPath.substr(
+                                    0,
+                                    currPath.indexOf(arr[arr.length - 1])
+                                )
+                            );
                     }}
                     alt="back"
                 />
