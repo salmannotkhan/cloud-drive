@@ -10,8 +10,12 @@ export default function AddFile(props) {
 	const [fileType, setFileType] = useState("file");
 	const addFile = (e) => {
 		e.preventDefault();
-		if (fileName.trim() === "") {
-			setError("Invalid File / Folder name");
+		if (
+			fileName.trim() === "" ||
+			fileName.indexOf("/") !== -1 ||
+			/^\.*$/.test(fileName)
+		) {
+			setError(`Invalid ${fileType} name`);
 		} else if (
 			props.fileList.every(
 				(file) => file.path !== props.currPath || file.name !== fileName
